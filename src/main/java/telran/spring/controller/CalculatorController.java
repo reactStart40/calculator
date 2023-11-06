@@ -1,23 +1,21 @@
 package telran.spring.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.RequiredArgsConstructor;
 import telran.spring.service.Calculator;
 
 @RestController
 	@RequestMapping("calculator")
+@RequiredArgsConstructor
+
 	public class CalculatorController {
 
-	    private final Calculator calculator;
+	    final Calculator calculator;
 
-	    @Autowired
-	    public CalculatorController(Calculator calculator) {
-	        this.calculator = calculator;
-	    }
 
 	    @GetMapping("multiply/{op1}/{op2}")
 	    public double multiply(@PathVariable double op1, @PathVariable double op2) {
